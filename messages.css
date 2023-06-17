@@ -1,0 +1,24 @@
+body {
+    background-color: #333; /* Dark grey background */
+    color: #fff; /* White text color */
+    font-family: Arial, sans-serif; /* Font family for text */
+    margin: 0;
+    padding: 20px;
+  }
+  
+  h1 {
+    font-size: 28px;
+    margin-bottom: 20px;
+  }
+  
+  #messagesContainer {
+    background-color: #555; /* Darker message box background */
+    padding: 20px;
+    border-radius: 5px;
+  }
+  
+  p {
+    font-size: 16px;
+    margin: 0;
+  }
+  

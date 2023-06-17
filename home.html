@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>Your Website Title</title>
+  <link rel="stylesheet" type="text/css" href="home.css">
+  <style>
+    .result {
+      font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+    
+  <header>
+    <div class="search-box">
+        <input type="text" id="search-input" placeholder="Search">
+        <button type="button" onclick="compareSearchTerm()">Go</button>
+    </div>
+    <p class="result" id="result-message"></p>
+  
+    <h1>Your Website</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Services</a></li>
+        <li><a href="#">Contact</a></li>
+      </ul>
+    </nav>
+    
+  </header>
+
+  <main>
+    <section>
+      <h2>Welcome to our website!</h2>
+      <p>This is the main content of your website.</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 Your Website. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function compareSearchTerm() {
+      var searchInput = document.getElementById('search-input');
+      var searchTerm = searchInput.value;
+      
+      // Example comparison with a stored value
+      var storedValue = "example";
+      var yearbookCode= "yearbook";
+
+      
+      var resultMessage = document.getElementById('result-message');
+      
+      if (searchTerm === yearbookCode) {
+        var userClearenceLevel=0;
+
+        resultMessage.textContent = "Match found!";
+        window.location.href = 'messages1.html';
+
+      } else {
+        resultMessage.textContent = "No match found!";
+      }
+    }
+  </script>
+</body>
+</html>

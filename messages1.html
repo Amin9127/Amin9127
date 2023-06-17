@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Messages 1</title>
+  <link rel="stylesheet" type="text/css" href="messages.css">
+</head>
+<body>
+  <h1>Welcome to the yearbook Page</h1>
+
+  <div id="welcomeContainer">
+    <h2 id="welcomeText"></h2>
+    <form id="nameForm">
+      <label for="nameInput">Enter your name:</label>
+      <input type="text" id="nameInput" />
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <div id="peopleList">
+    <h3>People who have visited:</h3>
+    <ul id="peopleListItems"></ul>
+  </div>
+
+  <script>
+    // Retrieve the clearance level from the URL parameter
+    var urlParams = new URLSearchParams(window.location.search);
+    var clearanceLevel = parseInt(urlParams.get('clearance'));
+
+    // Use the clearance level as needed
+    console.log("Clearance Level:", clearanceLevel);
+
+    // Welcome text
+    var welcomeText = "This page is only accessable to the code in the Year book of Central foundation boy's sixth form 2023";
+    var welcomeTextElement = document.getElementById('welcomeText');
+    welcomeTextElement.textContent = welcomeText;
+
+    // Retrieve the people list from the cookie
+    var peopleList = getPeopleListFromCookie() || [];
+
+    // Populate the people list on page load
+    displayPeopleList();
+
+    // Form submission handler
+    var nameForm = document.getElementById('nameForm');
+    var nameInput = document.getElementById('nameInput');
+    var peopleListItems = document.getElementById('peopleListItems');
+
+    nameForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      var name = nameInput.value;
+      if (name.trim() !== '') {
+        peopleList.push(name);
+        displayPeopleList();
+        nameInput.value = '';
+        // Store the updated people list in a cookie
+        setPeopleListCookie(peopleList);
+      }
+    });
+
+    function displayPeopleList() {
+      var listItems = '';
+      for (var i = 0; i < peopleList.length; i++) {
+        listItems += '<li>' + peopleList[i] + '</li>';
+      }
+      peopleListItems.innerHTML = listItems;
+    }
+
+    function getPeopleListFromCookie() {
+      var name = 'peopleList=';
+      var decodedCookie = decodeURIComponent(document.cookie);
+      var cookieParts = decodedCookie.split(';');
+      for (var i = 0; i < cookieParts.length; i++) {
+        var cookiePart = cookieParts[i].trim();
+        if (cookiePart.indexOf(name) === 0) {
+          return JSON.parse(cookiePart.substring(name.length, cookiePart.length));
+        }
+      }
+      return null;
+    }
+
+    function setPeopleListCookie(peopleList) {
+      var name = 'peopleList=' + JSON.stringify(peopleList) + '; path=/';
+      document.cookie = name;
+    }
+  </script>
+</body>
+</html>
