@@ -11,36 +11,50 @@
   </style>
 </head>
 <body>
+  <div id="video-background">
+    <video autoplay loop muted>
+      <source src="video-bg.mp4" type="video/mp4">
+    </video>
+  </div>
+  <div id="content">
+
+    <header>
+      <div class="search-box">
+          <input type="text" id="search-input" placeholder="Enter Code">
+          <button type="button" onclick="compareSearchTerm()">Go</button>
+      </div>
+      <p class="result" id="result-message"></p>
     
-  <header>
-    <div class="search-box">
-        <input type="text" id="search-input" placeholder="Search">
-        <button type="button" onclick="compareSearchTerm()">Go</button>
-    </div>
-    <p class="result" id="result-message"></p>
+      <h1>Amin Ali</h1>
+      
+
+      
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">About</a></li>
+          <li><a href="#">Services</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </nav>
+      
+    </header>
+
+    <main>
+      <section>
+        <h2>Welcome to my website!</h2>
+        <p>This is the main content of your website.</p>
+      </section>
+    </main>
+  </div>
   
-    <h1>Your Website</h1>
-    <nav>
-      <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">About</a></li>
-        <li><a href="#">Services</a></li>
-        <li><a href="#">Contact</a></li>
-      </ul>
-    </nav>
-    
-  </header>
 
-  <main>
-    <section>
-      <h2>Welcome to my website!</h2>
-      <p>This is the main content of your website.</p>
-    </section>
-  </main>
-
-  <footer>
-    <p>&copy; 2023 Your Website. All rights reserved.</p>
-  </footer>
+  <script>
+    var video = document.querySelector("#video-background video");
+    video.addEventListener("loadeddata", function() {
+      video.play();
+    });
+  </script>
 
   <script>
     function compareSearchTerm() {
