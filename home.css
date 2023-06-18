@@ -6,6 +6,15 @@ body {
   padding: 20px;
 }
 
+@keyframes backgroundAnimation {
+  0% { background-color: #000; }
+  50% { background-color: #fff; }
+  100% { background-color: #000; }
+}
+
+body {
+  animation: backgroundAnimation 5s infinite;
+}
 
 
 .search-box {
